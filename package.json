@@ -1,5 +1,5 @@
 {
-  "name": "react-native-restart",
+  "name": "react-native-restart-newarch",
   "version": "0.1.0",
   "types": "lib/typescript/commonjs/src/index.d.ts",
   "description": "any",
@@ -38,7 +38,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace react-native-restart-example",
+    "example": "yarn workspace react-native-restart-newarch-example",
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -53,14 +53,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahmedawaad1804/react-native-restart.git"
+    "url": "git+https://github.com/ahmedawaad1804/react-native-restart-newarch.git"
   },
   "author": "ahmedawaad1804 <ahmedawaad1804@gmail.com> (https://github.com/ahmedawaad1804)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ahmedawaad1804/react-native-restart/issues"
+    "url": "https://github.com/ahmedawaad1804/react-native-restart-newarch/issues"
   },
-  "homepage": "https://github.com/ahmedawaad1804/react-native-restart#readme",
+  "homepage": "https://github.com/ahmedawaad1804/react-native-restart-newarch#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

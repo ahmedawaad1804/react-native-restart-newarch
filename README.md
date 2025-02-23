@@ -5,13 +5,13 @@ any
 ## Installation
 
 ```sh
-npm install react-native-restart
+npm install react-native-restart-newarch
 ```
 
 ## Usage
 
 ```js
-import { restart } from 'react-native-restart';
+import { restart } from 'react-native-restart-newarch';
 
 // ...
 

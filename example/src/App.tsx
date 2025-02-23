@@ -1,5 +1,5 @@
 import { View, StyleSheet, Button } from 'react-native';
-import RNRestart from 'react-native-restart';
+import RNRestart from 'react-native-restart-newarch';
 
 export default function App() {
   return (

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-restart": ["./src/index"]
+      "react-native-restart-newarch": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

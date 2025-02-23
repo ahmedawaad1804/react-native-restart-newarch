@@ -6,7 +6,7 @@ RCT_EXPORT_MODULE()
 
 - (void)loadBundle
 {
-    RCTTriggerReloadCommandListeners(@"react-native-restart: Restart");
+    RCTTriggerReloadCommandListeners(@"react-native-restart-newarch: Restart");
 }
 
 RCT_EXPORT_METHOD(restart) {

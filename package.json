@@ -1,6 +1,7 @@
 {
   "name": "react-native-restart",
   "version": "0.1.0",
+  "types": "lib/typescript/commonjs/src/index.d.ts",
   "description": "any",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",

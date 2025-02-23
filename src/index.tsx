@@ -1,5 +1,12 @@
 import Restart from './NativeRestart';
+import type { RNRestartModule } from './types';
 
-export function multiply(a: number, b: number): number {
-  return Restart.multiply(a, b);
+export function restart(): void {
+  return Restart.restart();
 }
+
+const RNRestart: RNRestartModule = {
+  restart,
+};
+
+export default RNRestart;

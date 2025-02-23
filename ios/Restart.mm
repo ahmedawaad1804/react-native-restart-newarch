@@ -1,18 +1,31 @@
 #import "Restart.h"
+#import <React/RCTReloadCommand.h>
 
 @implementation Restart
 RCT_EXPORT_MODULE()
 
-- (NSNumber *)multiply:(double)a b:(double)b {
-    NSNumber *result = @(a * b);
-
-    return result;
+- (void)loadBundle
+{
+    RCTTriggerReloadCommandListeners(@"react-native-restart: Restart");
 }
 
+RCT_EXPORT_METHOD(restart) {
+    if ([NSThread isMainThread]) {
+        [self loadBundle];
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self loadBundle];
+        });
+    }
+    return;
+}
+
+#ifdef RCT_NEW_ARCH_ENABLED
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
     (const facebook::react::ObjCTurboModule::InitParams &)params
 {
     return std::make_shared<facebook::react::NativeRestartSpecJSI>(params);
 }
+#endif
 
 @end

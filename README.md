@@ -10,15 +10,13 @@ npm install react-native-restart
 
 ## Usage
 
-
 ```js
-import { multiply } from 'react-native-restart';
+import { restart } from 'react-native-restart';
 
 // ...
 
-const result = multiply(3, 7);
+restart();
 ```
-
 
 ## Contributing
 

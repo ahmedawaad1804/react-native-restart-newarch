@@ -1,12 +1,10 @@
-import { Text, View, StyleSheet } from 'react-native';
-import { multiply } from 'react-native-restart';
-
-const result = multiply(3, 7);
+import { View, StyleSheet, Button } from 'react-native';
+import RNRestart from 'react-native-restart';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Button title="Restart" onPress={() => RNRestart.restart()} />
     </View>
   );
 }

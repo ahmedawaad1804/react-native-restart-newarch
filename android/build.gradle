@@ -51,11 +51,11 @@ android {
     }
   }
 
-  compileSdkVersion getExtOrIntegerDefault("compileSdkVersion")
+  compileSdkVersion rootProject.hasProperty('compileSdkVersion') ? rootProject.compileSdkVersion : getExtOrIntegerDefault("compileSdkVersion")
 
   defaultConfig {
-    minSdkVersion getExtOrIntegerDefault("minSdkVersion")
-    targetSdkVersion getExtOrIntegerDefault("targetSdkVersion")
+    minSdkVersion rootProject.hasProperty('minSdkVersion') ? rootProject.minSdkVersion : getExtOrIntegerDefault("minSdkVersion")
+    targetSdkVersion rootProject.hasProperty('targetSdkVersion') ? rootProject.targetSdkVersion : getExtOrIntegerDefault("targetSdkVersion")
     buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
   }
 
@@ -64,6 +64,7 @@ android {
   }
 
   buildTypes {
+
     release {
       minifyEnabled false
     }
@@ -83,8 +84,13 @@ android {
       if (isNewArchitectureEnabled()) {
           java.srcDirs += [
             "generated/java",
-            "generated/jni"
+            "generated/jni",
+            "src/newarch"
           ]
+      } else {
+        java.srcDirs += [
+          "src/oldarch"
+        ]
       }
     }
   }
@@ -95,11 +101,12 @@ repositories {
   google()
 }
 
-def kotlin_version = getExtOrDefault("kotlinVersion")
+
 
 dependencies {
+
   implementation "com.facebook.react:react-android"
-  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
 }
 
 if (isNewArchitectureEnabled()) {

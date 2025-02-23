@@ -2,7 +2,7 @@
   "name": "react-native-restart-newarch",
   "version": "0.1.0",
   "types": "lib/typescript/commonjs/src/index.d.ts",
-  "description": "any",
+  "description": "A React Native module for restarting the app programmatically, supporting both the new and old architectures.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",

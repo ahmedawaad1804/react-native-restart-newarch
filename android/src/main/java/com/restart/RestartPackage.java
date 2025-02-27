@@ -5,11 +5,11 @@ import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.module.model.ReactModuleInfo;
 import com.facebook.react.module.model.ReactModuleInfoProvider;
-
+import com.facebook.react.TurboReactPackage;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RestartPackage extends BaseReactPackage {
+public class RestartPackage extends TurboReactPackage {
 
     @Override
     public NativeModule getModule(String name, ReactApplicationContext reactContext) {
@@ -27,12 +27,13 @@ public class RestartPackage extends BaseReactPackage {
 
             Map<String, ReactModuleInfo> moduleInfos = new HashMap<>();
             moduleInfos.put(moduleName, new ReactModuleInfo(
-                    moduleName,
-                    moduleName,
-                    false,  // canOverrideExistingModule
-                    false,  // needsEagerInit
-                    false,  // isCxxModule
-                    isTurboModule    // isTurboModule
+              moduleName,
+              moduleName,
+              false, // canOverrideExistingModule
+                      false, // needsEagerInit
+                      true, // hasConstants
+                      false, // isCxxModule
+              isTurboModule    // isTurboModule  // isTurboModule
             ));
             return moduleInfos;
         };

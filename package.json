@@ -1,13 +1,13 @@
 {
   "name": "react-native-restart-newarch",
-  "version": "1.0.41",
-  "description": "A React Native module for restarting the app programmatically, supporting both the new and old architectures.",
+  "version": "1.0.71",
+  "description": "Restart the app for new architecture",
   "license": "MIT",
-  "source": "src/index.tsx",
+  "source": "src/index.ts",
   "main": "./lib/commonjs/index.js",
-  "react-native": "src/index.tsx",
+  "react-native": "src/index.ts",
   "module": "./lib/module/index.js",
-  "types": "lib/typescript/commonjs/src/index.d.ts",
+  "types": "lib/typescript/src/index.d.ts",
   "scripts": {
     "typecheck": "tsc --noEmit --project tsconfig.test.json",
     "test": "jest",
@@ -16,11 +16,13 @@
   },
   "keywords": [
     "react-native",
-    "react-native-restart",
+    "restart",
     "react-native-restart-newarch",
-    "react-native-restart-new-architecture",
+    "react-native-restart",
+    "newarch",
+    "android",
     "ios",
-    "android"
+    "native"
   ],
   "files": [
     "src",
@@ -38,12 +40,13 @@
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__",
-    "!**/.*"
+    "!**/.*",
+    "!ios/generated"
   ],
   "workspaces": [
     "example"
   ],
-  "author": "ahmedawaad1804 <ahmedawaad1804@gmail.com> (https://github.com/ahmedawaad1804)",
+  "author": "Ahmed Awad",
   "peerDependencies": {
     "react-native": ">=0.60.0"
   },
@@ -52,9 +55,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahmedawaad1804/react-native-restart-newarch.git"
+    "url": "https://github.com/ahmedawaad1804/react-native-restart-newarch.git"
   },
-  "homepage": "https://github.com/ahmedawaad1804/react-native-restart-newarch#readme",
+  "homepage": "https://github.com/ahmedawaad1804/react-native-restart-newarch",
   "readme": "https://github.com/ahmedawaad1804/react-native-restart-newarch#readme",
   "bugs": {
     "url": "https://github.com/ahmedawaad1804/react-native-restart-newarch/issues"
@@ -62,11 +65,7 @@
   "codegenConfig": {
     "name": "RNRestartSpec",
     "type": "modules",
-    "jsSrcsDir": "src/codegenSpec",
-    "outputDir": {
-      "ios": "ios/generated",
-      "android": "android/generated"
-    },
+    "jsSrcsDir": "./src",
     "android": {
       "javaPackageName": "com.restart"
     }

@@ -29,6 +29,10 @@ import RNRestart from 'react-native-restart-newarch'; // Import package from nod
 // Immediately reload the React Native Bundle
 
 RNRestart.restart(); // BOOM! Your app restarts instantly! ⚡
+// Or
+RNRestart.Restart(); // BOOM! Your app restarts instantly! ⚡
+
+
 ```
 
 This is **faster than a full reload** and **easier than debugging a state issue**.

@@ -6,7 +6,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 
 public class RestartModuleImpl {
 
-    public static final String NAME = "Restart";
+    public static final String NAME = "RestartNewArch";
 
     public static void restartApp(ReactApplicationContext reactContext) {
         try {

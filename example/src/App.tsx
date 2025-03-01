@@ -4,7 +4,7 @@ import RNRestart from "react-native-restart-newarch";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Button title="Restart" onPress={() => RNRestart.restart()} />
+      <Button title="Restartnew" onPress={() => RNRestart.Restart()} />
     </View>
   );
 }

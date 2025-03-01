@@ -5,4 +5,4 @@ export interface Spec extends TurboModule {
   restart(): void;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('Restart');
+export default TurboModuleRegistry.getEnforcing<Spec>('RestartNewArch');

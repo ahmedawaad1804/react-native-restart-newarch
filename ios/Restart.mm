@@ -1,12 +1,12 @@
 #import "Restart.h"
 #import <React/RCTReloadCommand.h>
 
-@implementation Restart
+@implementation RestartNewArch
 RCT_EXPORT_MODULE()
 
 - (void)loadBundle
 {
-    RCTTriggerReloadCommandListeners(@"react-native-restart-newarch: Restart");
+    RCTTriggerReloadCommandListeners(@"react-native-restart-newarch: RestartNewArch");
 }
 
 RCT_EXPORT_METHOD(restart) {

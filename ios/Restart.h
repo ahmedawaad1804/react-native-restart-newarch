@@ -1,9 +1,9 @@
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <RNRestartSpec/RNRestartSpec.h>
-@interface Restart : NSObject <NativeRestartSpec>
+@interface RestartNewArch : NSObject <NativeRestartSpec>
 #else
 #import <React/RCTBridgeModule.h>
-@interface Restart : NSObject <RCTBridgeModule>
+@interface RestartNewArch : NSObject <RCTBridgeModule>
 #endif
 
 @end

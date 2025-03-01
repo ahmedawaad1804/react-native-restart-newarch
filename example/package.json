@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "react": "19.0.0",
-    "react-native": "0.78.0"
+    "react-native": "0.78.0",
+    "react-native-restart-newarch": "./../react-native-restart-newarch-1.0.72.tgz"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

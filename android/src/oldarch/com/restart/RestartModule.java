@@ -1,4 +1,4 @@
-package com.restart;
+package com.restartnewarch;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;

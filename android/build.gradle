@@ -42,7 +42,7 @@ def supportsNamespace() {
 
 android {
   if (supportsNamespace()) {
-    namespace "com.restart"
+    namespace "com.restartnewarch"
 
     sourceSets {
       main {
@@ -113,6 +113,6 @@ if (isNewArchitectureEnabled()) {
   react {
     jsRootDir = file("../src/")
     libraryName = "Restart"
-    codegenJavaPackageName = "com.restart"
+    codegenJavaPackageName = "com.restartnewarch"
   }
 }

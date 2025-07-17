@@ -1,4 +1,4 @@
-package com.restart;
+package com.restartnewarch;
 
 import android.content.Intent;
 import android.util.Log;

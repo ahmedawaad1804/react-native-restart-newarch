@@ -1,6 +1,6 @@
-package com.restart;
+package com.restartnewarch;
 
-import com.facebook.react.BaseReactPackage;
+
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.module.model.ReactModuleInfo;
@@ -9,7 +9,7 @@ import com.facebook.react.TurboReactPackage;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RestartPackage extends TurboReactPackage {
+public class RestartNewarchPackage extends TurboReactPackage {
 
     @Override
     public NativeModule getModule(String name, ReactApplicationContext reactContext) {

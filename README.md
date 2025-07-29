@@ -1,4 +1,4 @@
-# ⚡ React Native Restart (New Architecture) 🚀
+# ⚡ React Native Restart (New & Old Architecture ) 🚀
 
 Ever wished your React Native app could **restart itself like a phoenix rising from the ashes**? 🔥 **Now it can!**
 
@@ -42,6 +42,7 @@ This is **faster than a full reload** and **easier than debugging a state issue*
 ## 🧐 Why Use This?
 
 ✅ **Supports the New Architecture** (TurboModules FTW!)
+✅ **Supports the Old Architecture** (Backward Compatible)
 ✅ **No Native Code Tweaks Needed** (Plug & Play)
 ✅ **Instant Restart** (Goodbye, manual reloading)
 ✅ **Perfect for Feature Toggles** (Change configs & restart on the fly!)

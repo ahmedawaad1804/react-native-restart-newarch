@@ -1,6 +1,6 @@
 {
   "name": "react-native-restart-newarch",
-  "version": "1.0.79",
+  "version": "1.0.80",
   "description": "Restart the app for new architecture",
   "license": "MIT",
   "source": "src/index.ts",
@@ -89,7 +89,7 @@
     "jest": "^29.7.0",
     "prettier": "^2.8.5",
     "react-native": "^0.74.4",
-    "react-native-builder-bob": "^0.29.0",
+    "react-native-builder-bob": "^0.29.1",
     "ts-jest": "^29.2.4",
     "tslib": "^2.6.3",
     "turbo": "^2.0.11",

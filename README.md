@@ -1,4 +1,4 @@
-# ⚡ React Native Restart (New & Old Architecture ) 🚀
+# ⚡ React Native Restart (New & Old Arch ) 🚀
 
 Ever wished your React Native app could **restart itself like a phoenix rising from the ashes**? 🔥 **Now it can!**
 

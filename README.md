@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/react-native-restart-newarch.svg)](https://www.npmjs.com/package/react-native-restart-newarch)
 [![npm downloads](https://img.shields.io/npm/dm/react-native-restart-newarch.svg)](https://www.npmjs.com/package/react-native-restart-newarch)
-[![Build Status](https://github.com/ahmedawaad/react-native-restart-newarch/actions/workflows/ci.yml/badge.svg)](https://github.com/ahmedawaad/react-native-restart-newarch/actions)
+[![Build Status](https://github.com/ahmedawaad1804/react-native-restart-newarch/actions/workflows/ci.yml/badge.svg)](https://github.com/ahmedawaad1804/react-native-restart-newarch/actions)
 [![License](https://img.shields.io/npm/l/react-native-restart-newarch.svg)](./LICENSE)
 [![Bundlephobia](https://img.shields.io/bundlephobia/minzip/react-native-restart-newarch.svg)](https://bundlephobia.com/package/react-native-restart-newarch)
 [![Platform](https://img.shields.io/badge/platform-react--native-blue.svg)](https://reactnative.dev)

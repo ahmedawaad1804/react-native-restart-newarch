@@ -12,7 +12,8 @@
     "typecheck": "tsc --noEmit --project tsconfig.test.json",
     "test": "jest",
     "build": "bob build",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepare": "yarn build"
   },
   "keywords": [
     "react-native",

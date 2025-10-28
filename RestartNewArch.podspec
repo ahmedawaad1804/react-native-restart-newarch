@@ -3,6 +3,11 @@ require "json"
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 folly_compiler_flags = '-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32'
 
+
+Pod::UI.puts "[react-native-restart-newarch] Thank you for using react-native-restart-newarch ❤️"
+Pod::UI.puts "[react-native-restart-newarch] If you enjoy using react-native-restart-newarch, please consider sponsoring this project only github stars are needed :https://github.com/ahmedawaad1804/react-native-restart-newarch"
+
+
 Pod::Spec.new do |s|
   s.name         = "RestartNewArch"
   s.version      = package["version"]

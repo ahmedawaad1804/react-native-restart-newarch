@@ -31,6 +31,10 @@ def getExtOrIntegerDefault(name) {
   return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["Restart_" + name]).toInteger()
 }
 
+logger.warn("[react-native-restart-newarch] Thank you for using react-native-restart-newarch ❤️")
+logger.warn("[react-native-restart-newarch] If you enjoy using react-native-restart-newarch, please consider sponsoring this project only github stars are needed :https://github.com/ahmedawaad1804/react-native-restart-newarch")
+
+
 def supportsNamespace() {
   def parsed = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')
   def major = parsed[0].toInteger()

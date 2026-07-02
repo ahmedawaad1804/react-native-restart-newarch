@@ -1,11 +1,17 @@
 #import "Restart.h"
 #import <React/RCTReloadCommand.h>
 
+static BOOL RNRestartReloadScheduled = NO;
+
+#if DEBUG
+static const NSTimeInterval RNRestartReloadDelay = 0.5;
+#else
+static const NSTimeInterval RNRestartReloadDelay = 0.25;
+#endif
+
 @implementation RestartNewArch
 
 RCT_EXPORT_MODULE()
-
-static BOOL reloadScheduled = NO;
 
 - (void)loadBundle
 {
@@ -15,12 +21,21 @@ static BOOL reloadScheduled = NO;
 RCT_EXPORT_METHOD(restart)
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (reloadScheduled) {
+        // Prevent multiple restart requests while one is already pending.
+        if (RNRestartReloadScheduled) {
             return;
         }
 
-        reloadScheduled = YES;
-        [self loadBundle];
+        RNRestartReloadScheduled = YES;
+
+        dispatch_after(
+            dispatch_time(DISPATCH_TIME_NOW,
+                          (int64_t)(RNRestartReloadDelay * NSEC_PER_SEC)),
+            dispatch_get_main_queue(),
+            ^{
+                RNRestartReloadScheduled = NO;
+                [self loadBundle];
+            });
     });
 }
 

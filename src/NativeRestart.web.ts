@@ -1,1 +1,5 @@
-export default { restart: () => console.log("Restart not supported on web.") };
+export default {
+  restart: () => {
+    window.location.reload();
+  },
+};

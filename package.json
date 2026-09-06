@@ -1,6 +1,6 @@
 {
   "name": "react-native-restart-newarch",
-  "version": "1.0.87",
+  "version": "1.0.88",
   "description": "Restart the app for new architecture",
   "license": "MIT",
   "source": "src/index.ts",

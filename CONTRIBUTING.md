@@ -119,13 +119,27 @@ Our pre-commit hooks verify that the linter and tests pass when committing.
 
 ### Publishing to npm
 
-We use [release-it](https://github.com/release-it/release-it) to make it easier to publish new versions. It handles common tasks like bumping version based on semver, creating tags and releases etc.
+Use `.github/workflows/publish.yml` to publish from GitHub-hosted runners with npm provenance. This creates the source-commit, workflow, and transparency-log links on the npm package page. Publishing from a local terminal does not generate GitHub build provenance.
 
-To publish new versions, run the following:
+One-time npm setup, after the workflow has been pushed to GitHub:
 
-```sh
-yarn release
-```
+1. Open the npm package's **Settings → Trusted publishing → Add trusted publisher** and select **GitHub Actions**.
+2. Set owner to `ahmedawaad1804`, repository to `react-native-restart-newarch`, and workflow filename to `publish.yml` (without its directory).
+3. Leave environment blank; this workflow does not use a GitHub environment.
+4. Enable **Allow npm publish** for direct publishing. No npm token secret is needed.
+
+Follow the [npm trusted-publishing guide](https://docs.npmjs.com/trusted-publishers/). Newly configured publishers must complete a first publish within npm's activation window (currently two days), so configure this when ready to release.
+
+For each release:
+
+1. Update `package.json`, the root version entries in `package-lock.json`, and the example's CocoaPods lockfile using `pod install` from `example/ios`.
+2. Commit and push the changes to `main`, and confirm the CI workflow passes for that commit.
+3. Open **GitHub Actions → Publish to npm → Run workflow**. Select `main` and enter the exact, unpublished version from `package.json`.
+4. Confirm the publish job succeeds, then check the version and provenance on npm.
+
+The workflow uses Node 24 and npm 11, installs dependencies without restoring build caches, builds and checks the package, and publishes using OIDC with `id-token: write`. It rejects a version that does not match the checked-out package and only runs the publishing job on `main`.
+
+An already published version cannot be overwritten or republished to add provenance. Use the next version if the current version was published locally.
 
 ### Scripts
 

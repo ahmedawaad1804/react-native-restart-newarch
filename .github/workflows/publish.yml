@@ -1,0 +1,62 @@
+name: Publish to npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Unpublished package.json version to release (for example, 1.0.91)'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: npm-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
+
+      - name: Verify release version
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: |
+          node - <<'JS'
+          const { name, version } = require('./package.json');
+          if (name !== 'react-native-restart-newarch' || version !== process.env.RELEASE_VERSION) {
+            throw new Error('Requested version must match package.json on main.');
+          }
+          JS
+
+      - name: Set up publishing tools
+        run: |
+          npm install --global npm@11 corepack
+          corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build and validate
+        run: |
+          yarn build
+          yarn typecheck
+          yarn lint
+          yarn test --runInBand
+          npm pack --dry-run
+
+      # npm authenticates using the GitHub OIDC identity configured on npmjs.com.
+      - name: Publish with provenance
+        run: npm publish --access public --provenance

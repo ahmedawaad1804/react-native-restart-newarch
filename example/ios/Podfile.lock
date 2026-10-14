@@ -1525,7 +1525,7 @@ PODS:
     - React-logger (= 0.78.0)
     - React-perflogger (= 0.78.0)
     - React-utils (= 0.78.0)
-  - RestartNewArch (1.0.89):
+  - RestartNewArch (1.0.90):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1827,7 +1827,7 @@ SPEC CHECKSUMS:
   ReactAppDependencyProvider: a1fb08dfdc7ebc387b2e54cfc9decd283ed821d8
   ReactCodegen: 008c319179d681a6a00966edfc67fda68f9fbb2e
   ReactCommon: 0c097b53f03d6bf166edbcd0915da32f3015dd90
-  RestartNewArch: b2f9667fb51689f388f0d3925de63d2cf8d3621a
+  RestartNewArch: 1694388026e042a7ce7bdbe38790efdab2d9933a
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: afd04ff05ebe0121a00c468a8a3c8080221cb14c
 

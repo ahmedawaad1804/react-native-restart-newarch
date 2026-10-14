@@ -1,4 +1,4 @@
-ENV['RCT_NEW_ARCH_ENABLED'] = '1'
+ENV['RCT_NEW_ARCH_ENABLED'] ||= '1'
 
 # Resolve react_native_pods.rb with node to allow for hoisting
 require Pod::Executable.execute_command('node', ['-p',
@@ -25,12 +25,26 @@ target 'RestartExample' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-
-  pre_install do |installer|
-    system("cd ../../ && npx bob build --target codegen")
-  end
-
   post_install do |installer|
+    # RN 0.78 pins fmt 11.0.2, whose consteval detection breaks with newer
+    # Apple Clang. Compiler flags cannot override it in this fmt version.
+    # https://github.com/fmtlib/fmt/issues/4740
+    fmt_header = installer.sandbox.root.join('fmt/include/fmt/base.h')
+    if fmt_header.exist?
+      contents = fmt_header.read
+      if contents.include?('#define FMT_VERSION 110002')
+        original = '#if !defined(__cpp_lib_is_constant_evaluated)'
+        patched = "#if defined(__apple_build_version__) && __clang_major__ >= 17\n" \
+                  "#  define FMT_USE_CONSTEVAL 0\n" \
+                  "#elif !defined(__cpp_lib_is_constant_evaluated)"
+        unless contents.include?(patched)
+          raise 'Unexpected fmt 11.0.2 consteval detection' unless contents.include?(original)
+          File.chmod(0644, fmt_header)
+          fmt_header.write(contents.sub(original, patched))
+        end
+      end
+    end
+
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
     react_native_post_install(
       installer,

@@ -8,6 +8,7 @@ import reactNative from "eslint-plugin-react-native";
 import globals from "globals";
 
 export default [
+  { ignores: ["lib/**", "coverage/**", "**/build/**", "**/Pods/**"] },
   js.configs.recommended,
   {
     files: ["**/*.{ts,tsx,js,jsx}"],

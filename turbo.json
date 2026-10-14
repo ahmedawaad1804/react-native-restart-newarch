@@ -2,35 +2,18 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "build:android": {
-      "env": ["ORG_GRADLE_PROJECT_newArchEnabled"],
-      "inputs": [
-        "package.json",
-        "android",
-        "!android/build",
-        "src/*.ts",
-        "src/*.tsx",
-        "example/package.json",
-        "example/android",
-        "!example/android/.gradle",
-        "!example/android/build",
-        "!example/android/app/build"
+      "env": [
+        "ORG_GRADLE_PROJECT_newArchEnabled"
       ],
-      "outputs": []
+      "outputs": [],
+      "cache": false
     },
     "build:ios": {
-      "env": ["RCT_NEW_ARCH_ENABLED"],
-      "inputs": [
-        "package.json",
-        "*.podspec",
-        "ios",
-        "src/*.ts",
-        "src/*.tsx",
-        "example/package.json",
-        "example/ios",
-        "!example/ios/build",
-        "!example/ios/Pods"
+      "env": [
+        "RCT_NEW_ARCH_ENABLED"
       ],
-      "outputs": []
+      "outputs": [],
+      "cache": false
     }
   }
 }

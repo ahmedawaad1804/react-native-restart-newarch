@@ -1,6 +1,6 @@
 {
   "name": "react-native-restart-newarch",
-  "version": "1.0.88",
+  "version": "1.0.89",
   "description": "Restart the app for new architecture",
   "license": "MIT",
   "source": "src/index.ts",
@@ -9,7 +9,7 @@
   "module": "./lib/module/index.js",
   "types": "lib/typescript/src/index.d.ts",
   "scripts": {
-    "typecheck": "tsc --noEmit --project tsconfig.test.json",
+    "typecheck": "tsc --noEmit --project tsconfig.build.json && tsc --noEmit --project tsconfig.test.json",
     "test": "jest",
     "build": "bob build",
     "lint": "eslint .",
@@ -112,7 +112,12 @@
     "targets": [
       "commonjs",
       "module",
-      "typescript"
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
     ]
   }
 }

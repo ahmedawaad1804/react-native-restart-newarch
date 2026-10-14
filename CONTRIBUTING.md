@@ -74,6 +74,28 @@ Remember to add tests for your change if possible. Run the unit tests by:
 yarn test
 ```
 
+### Native restart smoke test
+
+The Jest tests mock the native module. Use the example app to check the actual native restart path. Its counter deliberately lives only in React state and must reset after a restart.
+
+1. Build and install the current example on a simulator, emulator, or device. For Debug, start Metro with `yarn workspace react-native-restart-example start` and make sure the app can reach it. For Release, use a build with the JavaScript bundle included.
+2. Tap **Increment** and confirm **Count: 1**.
+3. Tap **Restart app**. The app must return to **Count: 0** without manually relaunching it.
+4. Repeat steps 2–3 three times.
+5. Increment again, then tap **Request restart three times**. Confirm the app returns to **Count: 0** and still responds to **Increment**.
+
+With [Maestro installed](https://docs.maestro.dev/getting-started/installing-maestro), the same checks can be run from the repository root against an installed example:
+
+```sh
+maestro test example/.maestro/restart.yaml
+```
+
+The flow launches the app only at the start. It waits for the package's own restart after each button press, so it does not hide a failed restart by relaunching the app itself. See Maestro's [repeat](https://docs.maestro.dev/reference/commands-available/repeat) and [extendedWaitUntil](https://docs.maestro.dev/reference/commands-available/extendedwaituntil) commands.
+
+Run on Android and iOS in both Debug and Release. On RN versions that support both architectures, cover both; use New Architecture for versions that require it. Record the RN version, OS, architecture, build mode, and result. A successful native build alone is not a passing smoke test. The burst check verifies recovery and responsiveness, not the exact number of native reloads.
+
+For a consuming app, also save a real setting through its persistence layer, await the save, restart, and confirm the setting is restored. The example counter is intentionally not persisted and this flow does not validate your app's storage or native singleton reset behavior.
+
 ### Commit message convention
 
 We follow the [conventional commits specification](https://www.conventionalcommits.org/en) for our commit messages:

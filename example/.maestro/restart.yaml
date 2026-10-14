@@ -1,0 +1,29 @@
+appId: restart.example
+---
+- launchApp
+- extendedWaitUntil:
+    visible: "Count: 0"
+    timeout: 30000
+- repeat:
+    times: 3
+    commands:
+      - tapOn:
+          id: increment
+      - assertVisible: "Count: 1"
+      - tapOn:
+          id: restart
+      # Do not relaunch here: the package must bring the app back itself.
+      - extendedWaitUntil:
+          visible: "Count: 0"
+          timeout: 30000
+- tapOn:
+    id: increment
+- assertVisible: "Count: 1"
+- tapOn:
+    id: restart-repeatedly
+- extendedWaitUntil:
+    visible: "Count: 0"
+    timeout: 30000
+- tapOn:
+    id: increment
+- assertVisible: "Count: 1"

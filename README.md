@@ -28,21 +28,47 @@ No more manually killing the app. Just call `RNRestart.restart()` and let the ma
 npm install react-native-restart-newarch
 ```
 
-(Yeah, it's that easy!)
+For iOS, install the native pods from your app's `ios` directory:
+
+```sh
+cd ios
+bundle exec pod install
+cd ..
+```
+
+If your project does not use Bundler, run `pod install` instead. Rebuild and reinstall the Android or iOS app after installation; restarting Metro alone does not add the native module. React Native autolinking handles registration.
+
+**Expo:** use a development build or a standalone native build that includes this package. It cannot run in Expo Go. After adding it, rebuild your development client. See [Expo's native-library guide](https://docs.expo.dev/workflow/customizing/).
+
+If importing the package reports that `RestartNewArch` could not be found, check that pods were installed and that you are running the rebuilt app.
 
 ---
 
 ## 🚀 Usage
 
-```js
-import RNRestart from "react-native-restart-newarch"; // Import package from node modules
+```tsx
+import { Button } from 'react-native';
+import { restart } from 'react-native-restart-newarch';
 
-// Restart the app (see platform behavior below)
-
-RNRestart.restart();
-// Or
-RNRestart.Restart();
+export function RestartButton() {
+  return <Button title="Restart app" onPress={restart} />;
+}
 ```
+
+The default import also supports `RNRestart.restart()` and the equivalent `RNRestart.Restart()` alias. Call one of these from an event handler. Do not call restart at module scope, during render, or in an unconditional startup effect: that can create a restart loop.
+
+When saving settings, await the storage operation before restarting:
+
+```ts
+import { restart } from 'react-native-restart-newarch';
+
+async function saveAndRestart(saveChanges: () => Promise<void>) {
+  await saveChanges(); // Your app's persistence operation; let failures reach the caller.
+  restart();
+}
+```
+
+Call `saveAndRestart` from your settings handler and handle save errors there. Awaiting `restart()` itself does not wait for the app to restart.
 
 ### Platform behavior
 
@@ -50,7 +76,9 @@ RNRestart.Restart();
 - **Android** starts the launcher activity in a fresh task and exits the current process.
 - **Web** reloads the current page.
 
-Persist any state you need before calling `restart()`. This API returns `void`; it does not signal when the restart has completed.
+Persist any state you need before calling `restart()`. This API returns `void`; it does not signal when the restart has completed. iOS does not restart the entire process, so native singletons can survive the React Native reload.
+
+For device verification, see the [native restart smoke test](CONTRIBUTING.md#native-restart-smoke-test).
 
 ---
 

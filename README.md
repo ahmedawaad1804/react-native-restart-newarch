@@ -5,8 +5,11 @@
 [![Build Status](https://github.com/ahmedawaad1804/react-native-restart-newarch/actions/workflows/ci.yml/badge.svg)](https://github.com/ahmedawaad1804/react-native-restart-newarch/actions)
 [![License](https://img.shields.io/npm/l/react-native-restart-newarch.svg)](./LICENSE)
 [![Bundlephobia](https://img.shields.io/bundlephobia/minzip/react-native-restart-newarch.svg)](https://bundlephobia.com/package/react-native-restart-newarch)
-[![Platform](https://img.shields.io/badge/platform-react--native-blue.svg)](https://reactnative.dev)
+[![Platforms: Android, iOS, Web](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20Web-blue.svg)](#platform-behavior)
+[![TypeScript declarations included](https://img.shields.io/badge/TypeScript-types%20included-3178C6.svg?logo=typescript&logoColor=white)](./src/types.tsx)
 [![Architecture](https://img.shields.io/badge/Supports-New%20%26%20Old%20Arch-success.svg)](https://reactnative.dev/architecture/)
+[![GitHub stars](https://img.shields.io/github/stars/ahmedawaad1804/react-native-restart-newarch.svg?style=flat)](https://github.com/ahmedawaad1804/react-native-restart-newarch/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/ahmedawaad1804/react-native-restart-newarch/main.svg)](https://github.com/ahmedawaad1804/react-native-restart-newarch/commits/main)
 
 Ever wished your React Native app could **restart itself like a phoenix rising from the ashes**? 🔥 **Now it can!**
 

@@ -13,7 +13,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
       - uses: ./.github/actions/setup
       - name: Lint files
         run: yarn lint
@@ -23,7 +23,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
       - uses: ./.github/actions/setup
       - name: Run unit tests
         run: yarn test --maxWorkers=2 --coverage
@@ -31,7 +31,7 @@ jobs:
   build-library:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
       - uses: ./.github/actions/setup
       - name: Build package
         run: yarn build
@@ -47,17 +47,17 @@ jobs:
       matrix:
         new-arch: ['true', 'false']
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
       - uses: ./.github/actions/setup
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v6.0.1
         with:
           distribution: temurin
           java-version: '17'
-      - uses: android-actions/setup-android@v3
+      - uses: android-actions/setup-android@v4.0.4
         with:
-          # Override the default list, which includes the unavailable legacy tools package.
+          # Install the SDK versions used by the example app.
           packages: 'platform-tools platforms;android-35 build-tools;35.0.0 ndk;27.1.12297006'
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6.1.0
         with:
           path: |
             ~/.gradle/caches
@@ -74,11 +74,11 @@ jobs:
     env:
       RCT_NEW_ARCH_ENABLED: '1'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
       - uses: ./.github/actions/setup
       - name: Restore CocoaPods
         id: cocoapods-cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6.1.0
         with:
           path: example/ios/Pods
           key: ${{ runner.os }}-cocoapods-v2-${{ hashFiles('example/ios/Podfile.lock', 'example/ios/Podfile', '*.podspec', 'yarn.lock') }}
@@ -90,7 +90,7 @@ jobs:
         run: pod install
       - name: Cache CocoaPods
         if: steps.cocoapods-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v6.1.0
         with:
           path: example/ios/Pods
           key: ${{ steps.cocoapods-cache.outputs.cache-primary-key }}
@@ -103,7 +103,7 @@ jobs:
             CODE_SIGNING_ALLOWED=NO build 2>&1 | tee "$RUNNER_TEMP/ios-build.log"
       - name: Upload iOS build log
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: ios-build-log
           path: ${{ runner.temp }}/ios-build.log

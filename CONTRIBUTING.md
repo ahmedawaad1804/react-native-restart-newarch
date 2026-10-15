@@ -132,6 +132,11 @@ Follow the [npm trusted-publishing guide](https://docs.npmjs.com/trusted-publish
 
 For each release:
 
+- Move completed entries from `CHANGELOG.md` under the new version. Separate runtime fixes, packaging changes, documentation, and CI changes; do not claim tests that were not run.
+- Update the README compatibility table only with recorded build or smoke-test evidence. Before changing the React Native peer minimum, test candidate minimum versions on both native platforms and record the architecture and build mode. Treat a raised minimum as a compatibility change.
+
+Release steps:
+
 1. Update `package.json`, the root version entries in `package-lock.json`, and the example's CocoaPods lockfile using `pod install` from `example/ios`.
 2. Commit and push the changes to `main`, and confirm the CI workflow passes for that commit.
 3. Open **GitHub Actions → Publish to npm → Run workflow**. Select `main` and enter the exact, unpublished version from `package.json`.
